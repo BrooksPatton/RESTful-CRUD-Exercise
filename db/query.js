@@ -1,6 +1,8 @@
-var db = require('./connection');
+var pg = require('./connection');
 
 function getAll() {
+		return pg('cartoon').select('*');
+		// res.render('Herro')
 	// Get all cartoons and return them to the route
 }
 
