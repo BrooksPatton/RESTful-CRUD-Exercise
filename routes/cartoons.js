@@ -22,27 +22,26 @@ router.get('/:id', (req, res) => {
 
 // Create the route for creating an item
 router.post('/', (req, res) => {
-  queries.create(cartoon)
+  queries.create(req.body)
   .then(function(cartoon) {
       res.json(cartoon)
   })
 })
 
 // Create the route for updating
-router.put('/:id', (req, res) => {
-  queries.update(req.params.id, cartoon)
+router.put('/', (req, res) => {
+  queries.update(req.body.id, req.body)
   .then(function(cartoon) {
     res.send('updated')
   })
 })
 
 // Route for deleting an item
-router.delete('/:id', (req, res) => {
-  queries.remove(req.params.id)
+router.delete('/', (req, res) => {
+    queries.remove(req.body.id)
   .then(function(cartoon){
     res.send('deleted')
   })
 })
-
 
 module.exports = router;
