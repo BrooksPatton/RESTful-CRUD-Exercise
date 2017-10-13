@@ -4,7 +4,7 @@ var queries = require('../db/query')
 // Bring in the queries object that has all of the db query functions
 
 // Create the route for get all
-router.get('/', function(request, response, next) {
+router.get('/', function(request, response) {
   queries.getAll()
     .then(function(cartoon) {
       response.json(cartoon)
@@ -12,7 +12,7 @@ router.get('/', function(request, response, next) {
 })
 
 // Create the route for get one
-router.get('/:id', function(request, response, next) {
+router.get('/:id', function(request, response) {
   queries.getOne(request.params.id)
     .then(function(cartoon) {
       response.json(cartoon)
@@ -21,8 +21,8 @@ router.get('/:id', function(request, response, next) {
 
 
 // Create the route for creating an item
-router.post('/', function(request, response, next) {
-  queries.create(cartoon)
+router.post('/', function(request, response) {
+  queries.create(request.body)
     .then(function(cartoon) {
       response.json(cartoon)
     })
@@ -30,19 +30,19 @@ router.post('/', function(request, response, next) {
 
 
 // Create the route for updating
-router.put('/:id', function(request, response, next) {
-  queries.update(request.params.id)
+router.put('/', function(request, response) {
+  queries.update(request.body.id, request.body)
     .then(function(cartoon) {
-      response.send(cartoon)
+      response.send('updated')
     })
 })
 
 
 // Route for deleting an item
-router.delete('/:id', function(request, response, next) {
-  queries.remove(request.params.id)
+router.delete('/', function(request, response) {
+  queries.remove(request.body.id)
     .then(function(cartoon) {
-      response.send(cartoon)
+      response.send('deleted')
     })
 })
 

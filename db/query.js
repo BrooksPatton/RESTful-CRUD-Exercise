@@ -12,12 +12,12 @@ function getOne(id) {
 
 function create(cartoon) {
   // Add a cartoon to the database
-  return db.table('cartoon').insertInto(title, year, network)
+  return db('cartoon').insert(cartoon)
 }
 
 function update(id, cartoon) {
   // Update a cartoon with the specified id
-  return db.update('cartoon').from('cartoon').where('id', id)
+  return db.update(cartoon).from('cartoon').where('id', id)
 }
 
 function remove(id) {
