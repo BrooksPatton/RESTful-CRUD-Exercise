@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,6 +11,7 @@ var index = require('./routes/index');
 var cartoons = require('./routes/cartoons');
 
 var app = express();
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
